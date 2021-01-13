@@ -10,6 +10,15 @@ public class PersonRequest {
     private String building;
     private String extension;
     private String apartment;
+    private Integer streetCode;
+
+    public Integer getStreetCode() {
+        return streetCode;
+    }
+
+    public void setStreetCode(Integer streetCode) {
+        this.streetCode = streetCode;
+    }
 
     public String getSurName() {
         return surName;
