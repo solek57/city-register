@@ -11,6 +11,14 @@ import java.sql.SQLException;
 
 public class CheckPersonDaoImpl implements CheckPersonDao {
 
+    public CheckPersonDaoImpl() {
+        try {
+            Class.forName("org.h2.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     private static final String SQL_REQUEST =
             "select temporal from cr_address_person ap " +
                     "inner join cr_person p on p.person_id = ap.person_id " +
