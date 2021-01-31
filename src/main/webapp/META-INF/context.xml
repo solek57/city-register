@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource
+            driverClassName="org.h2.Driver"
+            maxActive="4"
+            maxIdle="2"
+            maxWait="5000"
+            name="jdbc/cityRegister"
+            username="sr"
+            password="123"
+            type="javax.sql.DataSource"
+            url="jdbc:h2:file:~/cr"
+            validationQuery="SELECT 1">
+    </Resource>
+</Context>

@@ -1,8 +1,7 @@
 package edu.javacourse.register.web;
 
-import edu.javacourse.register.config.DBInit;
-import edu.javacourse.register.dao.CheckPersonDao;
 import edu.javacourse.register.dao.CheckPersonDaoImpl;
+import edu.javacourse.register.dao.PoolConnectionBuilder;
 import edu.javacourse.register.domain.PersonRequest;
 import edu.javacourse.register.domain.PersonResponse;
 import edu.javacourse.register.exception.CheckPersonException;
@@ -15,8 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 
 @WebServlet(name = "checkPerson", urlPatterns = {"/checkPerson"}, loadOnStartup = 1)
@@ -24,22 +21,14 @@ public class CheckPersonServlet extends HttpServlet {
 
     private static final Logger logger = LoggerFactory.getLogger(CheckPersonServlet.class);
 
-    CheckPersonDao checkPersonDao;
+    CheckPersonDaoImpl checkPersonDao;
 
     @Override
     public void init() throws ServletException {
         logger.info("servlet is created");
         checkPersonDao = new CheckPersonDaoImpl();
-        try {
-            DBInit.initDB();
-            logger.info("DB init success");
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        checkPersonDao.setConnectionBuilder(new PoolConnectionBuilder());
+        logger.info("DB init success");
     }
 
     @Override
@@ -57,7 +46,6 @@ public class CheckPersonServlet extends HttpServlet {
         personRequest.setStreetCode(1);
         personRequest.setExtension("2");
         personRequest.setApartment("121");
-        checkPersonDao = new CheckPersonDaoImpl();
 
         try {
             PersonResponse personResponse = checkPersonDao.checkPerson(personRequest);

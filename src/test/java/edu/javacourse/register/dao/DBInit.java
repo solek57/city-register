@@ -17,7 +17,7 @@ public class DBInit {
         List<String> stringsCreateTable = Files.readAllLines(Paths.get(url.toURI()));
         String strFromSQLCreateTable = stringsCreateTable.stream().collect(Collectors.joining());
 
-        try (Connection connection = ConnectionBuilder.getConnection();
+        try (Connection connection = new ConnectionBuilderImpl().getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(strFromSQLCreateTable);
         }
