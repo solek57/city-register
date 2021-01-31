@@ -12,22 +12,22 @@ import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-import static org.junit.Assert.*;
-
 public class CheckPersonDaoImplTest {
     PersonRequest personRequest;
-    CheckPersonDao checkPersonDao;
+    CheckPersonDaoImpl checkPersonDao;
     PersonResponse personResponse;
 
     @BeforeClass
     public static void init() throws SQLException, IOException, URISyntaxException {
         DBInit.initDB();
+
     }
 
     @Test
     public void checkPerson() throws CheckPersonException {
 
         personRequest = new PersonRequest();
+
         personRequest.setSurName("Васильев");
         personRequest.setGivenName("Павел");
         personRequest.setPatronymic("Николаевич");
@@ -37,6 +37,7 @@ public class CheckPersonDaoImplTest {
         personRequest.setExtension("2");
         personRequest.setApartment("121");
         checkPersonDao = new CheckPersonDaoImpl();
+        checkPersonDao.setConnectionBuilder(new ConnectionBuilderImpl());
 
         personResponse = checkPersonDao.checkPerson(personRequest);
 

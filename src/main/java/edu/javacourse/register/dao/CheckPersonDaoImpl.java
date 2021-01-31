@@ -11,13 +11,20 @@ import java.sql.SQLException;
 
 public class CheckPersonDaoImpl implements CheckPersonDao {
 
-    public CheckPersonDaoImpl() {
+
+    private ConnectionBuilder connectionBuilder;
+
+    public void setConnectionBuilder(ConnectionBuilder connectionBuilder) {
+        this.connectionBuilder = connectionBuilder;
+}
+
+    /*public CheckPersonDaoImpl() {
         try {
             Class.forName("org.h2.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     private static final String SQL_REQUEST =
             "select temporal from cr_address_person ap " +
@@ -32,7 +39,7 @@ public class CheckPersonDaoImpl implements CheckPersonDao {
                     "and upper(a.building) = upper(?)  ";
 
     private Connection getConnection() throws SQLException {
-        return ConnectionBuilder.getConnection();
+        return connectionBuilder.getConnection();
     }
 
     @Override
