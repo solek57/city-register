@@ -3,6 +3,7 @@ package edu.javacourse.register.dao;
 import edu.javacourse.register.domain.PersonRequest;
 import edu.javacourse.register.domain.PersonResponse;
 import edu.javacourse.register.exception.CheckPersonException;
+import edu.javacourse.register.util.ConnectionBuilder;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

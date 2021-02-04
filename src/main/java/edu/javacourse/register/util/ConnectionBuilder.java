@@ -1,4 +1,4 @@
-package edu.javacourse.register.dao;
+package edu.javacourse.register.util;
 
 import java.sql.Connection;
 import java.sql.SQLException;

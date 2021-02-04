@@ -1,7 +1,7 @@
 package edu.javacourse.register.web;
 
 import edu.javacourse.register.dao.CheckPersonDaoImpl;
-import edu.javacourse.register.dao.PoolConnectionBuilder;
+import edu.javacourse.register.util.PoolConnectionBuilder;
 import edu.javacourse.register.domain.PersonRequest;
 import edu.javacourse.register.domain.PersonResponse;
 import edu.javacourse.register.exception.CheckPersonException;
