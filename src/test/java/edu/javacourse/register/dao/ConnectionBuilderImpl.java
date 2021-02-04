@@ -1,6 +1,7 @@
 package edu.javacourse.register.dao;
 
 import edu.javacourse.register.config.Config;
+import edu.javacourse.register.util.ConnectionBuilder;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
