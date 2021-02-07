@@ -26,7 +26,6 @@ INSERT INTO cr_street (street_code, street_name)
 VALUES (1, 'Сампсоньевский проспект');
 
 
-
 CREATE TABLE cr_address (
     address_id SERIAL,
     district_code integer not null,
@@ -43,7 +42,6 @@ INSERT INTO cr_address (district_code, street_code, building, extension, apartme
 VALUES (1, 1, '10', '2', '121');
 INSERT INTO cr_address (district_code, street_code, building, extension, apartment)
 VALUES (1, 1, '271', null, '4');
-
 
 
 CREATE TABLE cr_person (
@@ -77,7 +75,6 @@ VALUES ('Васильева', 'Евгения', 'Павловна', '2016-01-11'
 INSERT INTO cr_person (sur_name, given_name, patronymic, date_of_birth,
 passport_seria, passport_number, passport_date, certificate_number, certificate_date)
 VALUES ('Васильев', 'Александр', 'Павлович', '2018-10-24', null, null, null, '321654', '2018-11-09');
-
 
 
 CREATE TABLE cr_address_person (

@@ -28,12 +28,10 @@ public class CheckPersonService {
     }
 
     @POST
-    @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public PersonResponse checkPerson(@PathParam("id") Integer id, PersonRequest request) throws CheckPersonException {
+    public PersonResponse checkPerson(PersonRequest request) throws CheckPersonException {
         logger.info(request.toString());
-        logger.info("id: " + id);
         return dao.checkPerson(request);
     }
 }
